@@ -1,0 +1,14 @@
+<h1>Home#index</h1>
+
+<% if params[:search].nil? %>
+    <%= form_with(url: "/", method: 'get', local: true) do %>
+        <%= text_field_tag :search, nil, placeholder: "Enter Flickr User-ID" %>
+        <%= submit_tag 'Load Photos' %>
+    <% end %>
+<% end %>
+
+<% @photos.each do |photo| %>
+    <div>
+        <img src="<%= Flickr.url_n(photo) %>"/>
+    </div>
+<% end %>
